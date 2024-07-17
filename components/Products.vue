@@ -28,7 +28,7 @@ const filteredData = computed(() =>
     <label for="simple-search" class="sr-only">Search</label>
     <div class="relative w-full">
       <div
-        class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+        class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -68,8 +68,14 @@ const filteredData = computed(() =>
 
   <div
     v-else
-    class="grid max-w-5xl grid-cols-1 mx-auto mt-8 text-center lg:max-w-6xl gap-y-4 sm:gap-x-8 sm:grid-cols-2 lg:grid-cols-3 sm:mt-12 lg:mt-20 sm:text-left"
+    class="grid max-w-5xl grid-cols-1 mx-auto mt-8 text-center lg:max-w-6xl gap-y-8 sm:gap-x-8 sm:grid-cols-2 lg:grid-cols-3 sm:mt-12 lg:mt-20 sm:text-left"
   >
+    <div
+      class="text-2xl font-semibold tracking-wide text-gray-400 capitalize"
+      v-if="filteredData.length === 0"
+    >
+      No data found.
+    </div>
     <template v-for="item in filteredData" :key="item.id">
       <a
         class="flex flex-col overflow-hidden transition bg-white border shadow-sm group rounded-xl hover:shadow-lg dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
